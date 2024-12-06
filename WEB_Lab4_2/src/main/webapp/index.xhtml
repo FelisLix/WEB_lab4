@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Customers</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </h:head>
+    <h:body>
+        <h1>Customers</h1>
+        <h:form>
+            <h:dataTable value="#{customerBean.customers}" var="cus">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    #{cus.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">First Name</f:facet>
+                    #{cus.firstName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name</f:facet>
+                    #{cus.lastName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Phone</f:facet>
+                    #{cus.phone}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    #{cus.email}
+                </h:column>
+                <h:column headerText="Teachers">
+                    <h:commandButton value="Show" action="#{customerBean.showOrders(cus.id)}"/>
+                </h:column>
+                <h:column headerText="Delete">
+                    <h:commandButton value="Delete" action="#{customerBean.delete(cus.id)}"
+                                     styleClass="ui-button-danger"
+                                     update="form" />
+                </h:column>
+            </h:dataTable>
+            <div class="form-container" style="width: 45%">
+                <h3>Add new customer</h3>
+                <div>
+                    <label>First name:</label>
+                    <h:inputText value="#{customerBean.customer.firstName}" placeholder="First Name" />
+                </div>
+                <div>
+                    <label>Last name:</label>
+                    <h:inputText value="#{customerBean.customer.lastName}" placeholder="Last Name" />
+                </div>
+                <div>
+                    <label>Phone:</label>
+                    <h:inputText value="#{customerBean.customer.phone}" placeholder="Phone Number" />
+                </div>
+                <div>
+                    <label>Email</label>
+                    <h:inputText value="#{customerBean.customer.email}" placeholder="Email" />
+                </div>
+                <div>
+                    <h:commandButton value="Add" action="#{customerBean.add()}" update="form" style="margin-right: 10px;"/>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
