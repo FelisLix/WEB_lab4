@@ -39,4 +39,20 @@ public class CustomerBean implements Serializable {
         customerDao.add(customer);
         customer = new Customer();
     }
+
+    public String loadForEdit(int id) {
+        customer = customerDao.find(id); // Load customer for editing
+        return "edit_customer";// Stay on the same page
+    }
+
+    public String update() {
+        customerDao.update(customer); // Update customer in the database
+        customer = new Customer(); // Reset the form
+        return "index.xhtml?faces-redirect=true";
+    }
+
+    public String cancelEdit() {
+        customer = new Customer(); // Reset the form
+        return "index.xhtml?faces-redirect=true";
+    }
 }
