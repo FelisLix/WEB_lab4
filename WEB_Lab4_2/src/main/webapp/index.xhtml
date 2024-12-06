@@ -34,8 +34,11 @@
                     <f:facet name="header">Email</f:facet>
                     #{cus.email}
                 </h:column>
-                <h:column headerText="Teachers">
+                <h:column headerText="Orders">
                     <h:commandButton value="Show" action="#{customerBean.showOrders(cus.id)}"/>
+                </h:column>
+                <h:column headerText="Edit">
+                    <h:commandButton value="Edit" action="#{customerBean.loadForEdit(cus.id)}"/>
                 </h:column>
                 <h:column headerText="Delete">
                     <h:commandButton value="Delete" action="#{customerBean.delete(cus.id)}"
