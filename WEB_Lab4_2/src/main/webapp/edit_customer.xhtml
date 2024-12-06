@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Customers</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </h:head>
+    <h:body>
+        <h1>Edit Customer</h1>
+    <h:form id="editForm">
+        <div class="form-container" style="width: 45%">
+            <div>
+                <label>First name:</label>
+                <h:inputText value="#{customerBean.customer.firstName}" placeholder="First Name" />
+            </div>
+            <div>
+                <label>Last name:</label>
+                <h:inputText value="#{customerBean.customer.lastName}" placeholder="Last Name" />
+            </div>
+            <div>
+                <label>Phone:</label>
+                <h:inputText value="#{customerBean.customer.phone}" placeholder="Phone Number" />
+            </div>
+            <div>
+                <label>Email</label>
+                <h:inputText value="#{customerBean.customer.email}" placeholder="Email" />
+            </div>
+            <div>
+                <h:commandButton value="Update" action="#{customerBean.update()}" update="customersTable editForm" />
+                <h:commandButton value="Cancel" action="#{customerBean.cancelEdit()}" update="editForm" />
+            </div>
+        </div>
+    </h:form>
+    </h:body>
+</f:view>
+</html>
