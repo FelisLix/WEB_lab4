@@ -36,4 +36,8 @@ public class CustomerDao {
     public void add(Customer customer) {
         em.persist(customer);
     }
+
+    public void update(Customer customer) {
+        em.merge(customer); // Merge changes into persistence context
+    }
 }
